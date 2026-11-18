@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.tianji"
-    android:versionCode="32"
-    android:versionName="4.1">
+    android:versionCode="33"
+    android:versionName="4.2">
 
     <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="35" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -28,6 +28,20 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data android:name="top.apphub.account.CLIENT_ID" android:value="3b71454e15d4a67d1ea6d1efdcbcce3d" />
+        <meta-data android:name="top.apphub.account.REDIRECT_URI" android:value="https://apps.0979019203.top/oauth/android/tianji/callback" />
+        <activity android:name="top.apphub.account.AppHubActivity"
+            android:exported="true" android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="apps.0979019203.top" android:path="/oauth/android/tianji/callback" />
             </intent-filter>
         </activity>
     </application>

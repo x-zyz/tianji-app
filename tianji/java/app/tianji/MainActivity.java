@@ -141,6 +141,11 @@ public class MainActivity extends Activity {
     }
 
     public class Bridge {
+        @JavascriptInterface
+        public void openAppHubAccount() {
+            runOnUiThread(() -> top.apphub.account.AppHubActivity.open(MainActivity.this));
+        }
+
         private final AtomicBoolean checkingUpdate = new AtomicBoolean();
         private final AtomicBoolean installingUpdate = new AtomicBoolean();
         private final UpdateDownload downloads = new UpdateDownload(MainActivity.this);
