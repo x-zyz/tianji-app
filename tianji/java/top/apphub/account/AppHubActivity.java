@@ -122,7 +122,13 @@ public final class AppHubActivity extends Activity {
             runOnUiThread(() -> {
                 if (isDestroyed() || isFinishing()) return;
                 try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, authorize).addCategory(Intent.CATEGORY_BROWSABLE));
+                    Intent browser = new Intent(Intent.ACTION_VIEW, authorize)
+                            .addCategory(Intent.CATEGORY_BROWSABLE);
+                    // Request a Custom Tab without binding a session. Other browsers open the URL normally.
+                    Bundle customTab = new Bundle();
+                    customTab.putBinder("android.support.customtabs.extra.SESSION", null);
+                    browser.putExtras(customTab);
+                    startActivity(browser);
                 } catch (android.content.ActivityNotFoundException failure) {
                     notice = "请先安装可用的浏览器。";
                     render();
